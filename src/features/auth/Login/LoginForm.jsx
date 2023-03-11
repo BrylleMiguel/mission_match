@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-export default function LoginForm({ accounts }) {
+
+export default function LoginForm({ accounts, setHasError, setErrorMessage }) {
    const navigate = useNavigate();
+
    const [credentials, setCredentials] = React.useState({
       emailInput: '',
       passwordInput: '',
@@ -37,7 +39,11 @@ export default function LoginForm({ accounts }) {
          const { email, password } = account;
 
          if (email === emailInput && password === passwordInput) {
+            setHasError(false);
             navigate('/home');
+         } else {
+            setHasError(true);
+            setErrorMessage('credentials not found.');
          }
       });
    }

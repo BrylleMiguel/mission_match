@@ -6,7 +6,12 @@ import Logout from './features/auth/Logout';
 import Register from './features/auth/Register';
 import { v4 as uuidv4 } from 'uuid';
 
+import './index.css';
+
 function App() {
+   const [username, setUsername] = React.useState('');
+   const [hasLoggedIn, setHasLoggedIn] = React.useState(false);
+
    const [accounts, setAccounts] = React.useState([
       {
          id: uuidv4(),
@@ -15,8 +20,6 @@ function App() {
          password: 'david123',
       },
    ]);
-
-   console.log(accounts);
 
    return (
       <>
@@ -37,7 +40,17 @@ function App() {
                   </>
                }
             />
-            <Route path='/home' element={<Home />} />
+            <Route
+               path='/home'
+               element={
+                  <Home
+                     username={username}
+                     setUsername={setUsername}
+                     hasLoggedIn={hasLoggedIn}
+                     setHasLoggedIn={setHasLoggedIn}
+                  />
+               }
+            />
             <Route path='/login' element={<Login accounts={accounts} />} />
             <Route
                path='/register'
