@@ -13,12 +13,12 @@ function RegisterPage({ accounts, setAccounts }) {
 
             <Center>
                <Text color='dark.4'>
-                  already have an account: <Link to={'/login'}>login</Link>
+                  Already have an account: <Link to={'/login'}>login</Link>
                </Text>
             </Center>
             <Center>
                <Text color='dark.4'>
-                  continue as guest: <Link to={'/home'}>guest</Link>
+                  Continue as guest: <Link to={'/home'}>guest</Link>
                </Text>{' '}
             </Center>
          </Flex>

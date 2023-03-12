@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RegisterForm from './RegisterForm';
 import { Divider, Title, Container, Center, Text } from '@mantine/core';
+import RegisterForm from './RegisterForm';
 
 export default function Register({ accounts, setAccounts }) {
    const [errorMessage, setErrorMessage] = React.useState('');
@@ -19,7 +19,7 @@ export default function Register({ accounts, setAccounts }) {
             errorMessage={errorMessage}
             setErrorMessage={setErrorMessage}
          />
-         <Divider my='sm' />
+         <Divider my='sm' label='or' labelPosition='center' />
       </>
    );
 }

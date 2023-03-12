@@ -4,7 +4,12 @@ import { BiUserCircle } from 'react-icons/bi';
 import { TbPassword } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 
-export default function LoginForm({ accounts, setHasError, setErrorMessage }) {
+export default function LoginForm({
+   accounts,
+   setHasError,
+   setErrorMessage,
+   setUsername,
+}) {
    const navigate = useNavigate();
 
    const [credentials, setCredentials] = React.useState({
@@ -23,7 +28,7 @@ export default function LoginForm({ accounts, setHasError, setErrorMessage }) {
             value={emailInput}
             onChange={handleInputChange}
             type='text'
-            placeholder='zxc@gmail.com'
+            placeholder='e.g. zxc@gmail.com'
          />
          <Input
             mb={'xs'}
@@ -50,12 +55,14 @@ export default function LoginForm({ accounts, setHasError, setErrorMessage }) {
    function handleSubmit(e) {
       e.preventDefault();
 
-      accounts.map((account) => {
-         const { email, password } = account;
+      return accounts.map((account) => {
+         const { name, email, password } = account;
 
          if (email === emailInput && password === passwordInput) {
             setHasError(false);
             navigate('/home');
+
+            setUsername(name);
          } else {
             setHasError(true);
             setErrorMessage('credentials not found.');

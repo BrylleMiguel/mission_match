@@ -2,7 +2,7 @@ import { Center, Container, Divider, Text } from '@mantine/core';
 import React from 'react';
 import LoginForm from './LoginForm';
 
-export default function Login({ accounts }) {
+export default function Login({ accounts, setUsername }) {
    const [errorMessage, setErrorMessage] = React.useState('');
    const [hasError, setHasError] = React.useState(false);
 
@@ -15,8 +15,9 @@ export default function Login({ accounts }) {
             accounts={accounts}
             setErrorMessage={setErrorMessage}
             setHasError={setHasError}
+            setUsername={setUsername}
          />
-         <Divider my='sm' />
+         <Divider my='sm' label='or' labelPosition='center' />
       </>
    );
 }
