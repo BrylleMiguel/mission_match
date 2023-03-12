@@ -1,4 +1,7 @@
+import { Button, Center, Input } from '@mantine/core';
 import React from 'react';
+import { BiUserCircle } from 'react-icons/bi';
+import { TbPassword } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm({ accounts, setHasError, setErrorMessage }) {
@@ -13,14 +16,18 @@ export default function LoginForm({ accounts, setHasError, setErrorMessage }) {
 
    return (
       <form onSubmit={handleSubmit} method='POST'>
-         <input
+         <Input
+            mb={'xs'}
+            icon={<BiUserCircle />}
             name='emailInput'
             value={emailInput}
             onChange={handleInputChange}
             type='text'
             placeholder='zxc@gmail.com'
          />
-         <input
+         <Input
+            mb={'xs'}
+            icon={<TbPassword />}
             name='passwordInput'
             value={passwordInput}
             onChange={handleInputChange}
@@ -28,7 +35,15 @@ export default function LoginForm({ accounts, setHasError, setErrorMessage }) {
             placeholder='password'
          />
 
-         <button disabled={!emailInput.includes('@gmail.com')}>login</button>
+         <Center>
+            <Button
+               type='submit'
+               variant={'outline'}
+               disabled={!emailInput.includes('@gmail.com')}
+            >
+               login
+            </Button>
+         </Center>
       </form>
    );
 

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import Home from './components/home';
 import Login from './features/auth/Login';
 import Logout from './features/auth/Logout';
 import Register from './features/auth/Register';
 import { v4 as uuidv4 } from 'uuid';
 
-import './index.css';
+import HomePage from './pages/home/HomePage';
+import LandingPage from './pages/landing/landingPage';
+import LoginPage from './pages/login';
+import RegisterPage from './pages/register/RegisterPage';
+import LogoutPage from './pages/logout';
+import { MantineProvider } from '@mantine/core';
 
 function App() {
    const [username, setUsername] = React.useState('');
@@ -21,29 +25,22 @@ function App() {
       },
    ]);
 
+   console.log(accounts);
+
    return (
-      <>
+      <MantineProvider
+         theme={{
+            fontFamily: 'Yantramanav',
+         }}
+         withGlobalStyles
+         withNormalizeCSS
+      >
          <Routes>
-            <Route
-               path='/'
-               element={
-                  <>
-                     <p>Hello!</p>
-                     <p>continuing as guest won't be able to apply for jobs.</p>
-                     <div>
-                        <Link to={'login'}>login</Link>
-                        <br />
-                        <Link to={'register'}>register</Link>
-                        <br />
-                        <Link to={'home'}>continue as guest</Link>
-                     </div>
-                  </>
-               }
-            />
+            <Route path='/' element={<LandingPage />} />
             <Route
                path='/home'
                element={
-                  <Home
+                  <HomePage
                      username={username}
                      setUsername={setUsername}
                      hasLoggedIn={hasLoggedIn}
@@ -51,16 +48,17 @@ function App() {
                   />
                }
             />
-            <Route path='/login' element={<Login accounts={accounts} />} />
+
+            <Route path='/login' element={<LoginPage accounts={accounts} />} />
             <Route
                path='/register'
                element={
-                  <Register accounts={accounts} setAccounts={setAccounts} />
+                  <RegisterPage accounts={accounts} setAccounts={setAccounts} />
                }
             />
-            <Route path='/logout' element={<Logout />} />
+            <Route path='/logout' element={<LogoutPage />} />
          </Routes>
-      </>
+      </MantineProvider>
    );
 }
 

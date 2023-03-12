@@ -1,5 +1,5 @@
+import { Center, Container, Divider, Text } from '@mantine/core';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm';
 
 export default function Login({ accounts }) {
@@ -8,22 +8,15 @@ export default function Login({ accounts }) {
 
    return (
       <>
-         <h1 className='underline'>MissionMatch</h1>
-
-         <p>{hasError && errorMessage}</p>
+         <Center>
+            <Text color={'red.8'}>{hasError && errorMessage}</Text>
+         </Center>
          <LoginForm
             accounts={accounts}
             setErrorMessage={setErrorMessage}
             setHasError={setHasError}
          />
-
-         <p>
-            Don't have an account yet: <Link to={'/register'}>register</Link>
-         </p>
-
-         <p>
-            continue as guest: <Link to={'/home'}>guest</Link>
-         </p>
+         <Divider my='sm' />
       </>
    );
 }

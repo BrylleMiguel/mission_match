@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
+import { Divider, Title, Container, Center, Text } from '@mantine/core';
 
 export default function Register({ accounts, setAccounts }) {
    const [errorMessage, setErrorMessage] = React.useState('');
@@ -8,7 +9,9 @@ export default function Register({ accounts, setAccounts }) {
 
    return (
       <>
-         <div>{hasError && errorMessage}</div>
+         <Center>
+            <Text color={'red.7'}>{hasError && errorMessage}</Text>
+         </Center>
          <RegisterForm
             accounts={accounts}
             setAccounts={setAccounts}
@@ -16,14 +19,7 @@ export default function Register({ accounts, setAccounts }) {
             errorMessage={errorMessage}
             setErrorMessage={setErrorMessage}
          />
-
-         <div>
-            <p>already have an account:</p>
-            <Link to={'/login'}>login</Link>
-
-            <p>continue as guest:</p>
-            <Link to={'/home'}>guest</Link>
-         </div>
+         <Divider my='sm' />
       </>
    );
 }

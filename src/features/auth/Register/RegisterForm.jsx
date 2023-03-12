@@ -1,6 +1,11 @@
+import { Button, Center, Container, Input } from '@mantine/core';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { CgMail } from 'react-icons/cg';
+import { TbPassword } from 'react-icons/tb';
+import { MdConfirmationNumber } from 'react-icons/md';
+import { BiUserCircle } from 'react-icons/bi';
 
 export default function RegisterForm({
    accounts,
@@ -20,40 +25,50 @@ export default function RegisterForm({
       inputs;
 
    return (
-      <>
-         <form onSubmit={handleSubmit}>
-            <input
-               name='nameInput'
-               value={nameInput}
-               onChange={handleInputChange}
-               type='text'
-               placeholder='username'
-            />
-            <input
-               name='emailInput'
-               value={emailInput}
-               onChange={handleInputChange}
-               type='text'
-               placeholder='e.g. zxc@gmail.com'
-            />
-            <input
-               name='passwordInput'
-               value={passwordInput}
-               onChange={handleInputChange}
-               type='password'
-               placeholder='password'
-            />
-            <input
-               name='confirmPasswordInput'
-               value={confirmPasswordInput}
-               onChange={handleInputChange}
-               type='password'
-               placeholder='confirm password'
-            />
+      <form onSubmit={handleSubmit}>
+         <Input
+            mb='xs'
+            icon={<BiUserCircle />}
+            name='nameInput'
+            value={nameInput}
+            onChange={handleInputChange}
+            type='text'
+            placeholder='username'
+         />
+         <Input
+            mb='xs'
+            icon={<CgMail />}
+            name='emailInput'
+            value={emailInput}
+            onChange={handleInputChange}
+            type='text'
+            placeholder='e.g. zxc@gmail.com'
+         />
+         <Input
+            mb='xs'
+            icon={<TbPassword />}
+            name='passwordInput'
+            value={passwordInput}
+            onChange={handleInputChange}
+            type='password'
+            placeholder='password'
+         />
+         <Input
+            mb='xs'
+            icon={<MdConfirmationNumber />}
+            name='confirmPasswordInput'
+            value={confirmPasswordInput}
+            onChange={handleInputChange}
+            type='password'
+            placeholder='confirm password'
+         />
 
-            <button>register</button>
-         </form>
-      </>
+         <Center>
+            <Button variant='outline' type='submit'>
+               Register
+            </Button>
+         </Center>
+      </form>
    );
 
    function handleInputChange(e) {
