@@ -82,29 +82,29 @@ export default function RegisterForm({
       e.preventDefault();
 
       // prettier-ignore
-      if (!emailInput.includes('@gmail.com')) { setHasError(true);
-         setErrorMessage('Invalid email format.');
-      } 
-
-      // prettier-ignore
-      else if ( emailInput === '' || nameInput === '' || passwordInput === '' || confirmPasswordInput === '') {
+      if ( emailInput === '' || nameInput === '' || passwordInput === '' || confirmPasswordInput === '') {
          setHasError(true);
          setErrorMessage('Please check for invalid input/s');
       } else if (passwordInput !== confirmPasswordInput) {
          setHasError(true);
          setErrorMessage(`Password don't match`);
       } else {
-         setAccounts(() => [
-            ...accounts,
-            {
-               id: uuidv4(),
-               name: nameInput,
-               email: emailInput,
-               password: passwordInput,
-            },
-         ]);
+         if (!emailInput.includes('@gmail.com')) {
+            setHasError(true);
+            setErrorMessage('Invalid email format.');
+         } else {
+            setAccounts(() => [
+               ...accounts,
+               {
+                  id: uuidv4(),
+                  name: nameInput,
+                  email: emailInput,
+                  password: passwordInput,
+               },
+            ]);
 
-         navigate('/login');
+            navigate('/login');
+         }
       }
    }
 }

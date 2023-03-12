@@ -1,6 +1,5 @@
+import React from 'react';
 import {
-   Box,
-   Button,
    Center,
    Container,
    Flex,
@@ -8,11 +7,12 @@ import {
    Text,
    Title,
 } from '@mantine/core';
-import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
-import { customButton } from '../../components/button/customButton';
 
 import { BsExclamationLg } from 'react-icons/bs';
+
+import { customButton } from '../../components/button/customButton';
 
 export default function LandingPage({ setUsername, setHasLoggedIn }) {
    const navigate = useNavigate();
@@ -51,12 +51,14 @@ export default function LandingPage({ setUsername, setHasLoggedIn }) {
                fn: () => handleNavigation('register'),
             })}
             <Notification
-               color={'red'}
                mt='sm'
-               icon={<BsExclamationLg />}
+               color={'red'}
+               icon={<BsExclamationLg color='white' size={25} />}
                withCloseButton={false}
             >
-               continuing as guest won't be able to apply for jobs.
+               <Text color={'dark.5'}>
+                  Continuing as guest won't be able to apply for jobs.
+               </Text>
             </Notification>
             {customButton({
                title: 'Continue as Guest',
