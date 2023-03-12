@@ -9,7 +9,7 @@ export default function Login({ accounts, setUsername }) {
    return (
       <>
          <Center>
-            <Text color={'red.8'}>{hasError && errorMessage}</Text>
+            <Text color={'red.4'}>{hasError && errorMessage}</Text>
          </Center>
          <LoginForm
             accounts={accounts}

@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsExclamationLg } from 'react-icons/bs';
 
 import { customButton } from '../../components/button/customButton';
+import Logo from '../../components/logo/Logo';
 
 export default function LandingPage({ setUsername, setHasLoggedIn }) {
    const navigate = useNavigate();
@@ -20,14 +21,9 @@ export default function LandingPage({ setUsername, setHasLoggedIn }) {
    return (
       <Container size={300} mt={200}>
          <Center>
-            <Title color={'dark.6'}>Hello! Welcome to</Title>
+            <Title>Hello! Welcome to</Title>
          </Center>
-         <Center>
-            <Flex direction={'row'}>
-               <Title color={'cyan.9'}>Mission</Title>
-               <Title color={'cyan.6'}>Match</Title>
-            </Flex>
-         </Center>
+         <Logo />
          <Flex
             mt={'xs'}
             mih={50}
@@ -56,8 +52,9 @@ export default function LandingPage({ setUsername, setHasLoggedIn }) {
                icon={<BsExclamationLg color='white' size={25} />}
                withCloseButton={false}
             >
-               <Text color={'dark.5'}>
-                  Continuing as guest won't be able to apply for jobs.
+               <Text>
+                  Continuing as guest won't be able to participate in any
+                  activities.
                </Text>
             </Notification>
             {customButton({

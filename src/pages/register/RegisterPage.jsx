@@ -12,12 +12,12 @@ function RegisterPage({ accounts, setAccounts }) {
             <Register accounts={accounts} setAccounts={setAccounts} />
 
             <Center>
-               <Text color='dark.4'>
+               <Text>
                   Already have an account: <Link to={'/login'}>login</Link>
                </Text>
             </Center>
             <Center>
-               <Text color='dark.4'>
+               <Text>
                   Continue as guest: <Link to={'/home'}>guest</Link>
                </Text>{' '}
             </Center>

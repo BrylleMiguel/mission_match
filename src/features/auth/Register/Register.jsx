@@ -10,7 +10,7 @@ export default function Register({ accounts, setAccounts }) {
    return (
       <>
          <Center>
-            <Text color={'red.7'}>{hasError && errorMessage}</Text>
+            <Text color={'red.4'}>{hasError && errorMessage}</Text>
          </Center>
          <RegisterForm
             accounts={accounts}

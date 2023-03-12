@@ -1,10 +1,14 @@
+import { Box, Container, ScrollArea, Title } from '@mantine/core';
 import React from 'react';
 
 export default function HomePage({ username, hasLoggedIn }) {
-   console.log({ username });
    return (
-      <>
-         <h1>Home page</h1>
-      </>
+      <Container size={'lg'} mt={'lg'}>
+         <ScrollArea h={700}>
+            <Box>
+               <Title>Hi {username ? username : 'User'}!</Title>
+            </Box>
+         </ScrollArea>
+      </Container>
    );
 }

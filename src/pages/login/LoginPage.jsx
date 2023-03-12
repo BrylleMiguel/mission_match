@@ -11,13 +11,13 @@ export default function LoginPage({ accounts, setUsername }) {
             <LoginTitle />
             <Login accounts={accounts} setUsername={setUsername} />
             <Center>
-               <Text color='dark.4'>
+               <Text>
                   Don't have an account yet:{' '}
                   <Link to={'/register'}>register</Link>
                </Text>
             </Center>
             <Center>
-               <Text color={'dark.4'}>
+               <Text>
                   Continue as guest: <Link to={'/home'}>guest</Link>
                </Text>
             </Center>
