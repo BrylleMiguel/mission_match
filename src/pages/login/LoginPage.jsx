@@ -1,15 +1,19 @@
-import { Center, Text, Title, Flex, Container } from '@mantine/core';
+import { Center, Container, Flex, Text } from '@mantine/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Login from '../../features/auth/Login';
 import LoginTitle from './LoginTitle';
 
-export default function LoginPage({ accounts, setUsername }) {
+export default function LoginPage({ accounts, setUsername, setHasLoggedIn }) {
    return (
       <Container size={300} mt={200}>
          <Flex direction={'column'}>
             <LoginTitle />
-            <Login accounts={accounts} setUsername={setUsername} />
+            <Login
+               accounts={accounts}
+               setUsername={setUsername}
+               setHasLoggedIn={setHasLoggedIn}
+            />
             <Center>
                <Text>
                   Don't have an account yet:{' '}

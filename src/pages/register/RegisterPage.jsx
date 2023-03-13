@@ -1,4 +1,4 @@
-import { BackgroundImage, Center, Container, Flex, Text } from '@mantine/core';
+import { Center, Container, Flex, Text } from '@mantine/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Register from '../../features/auth/Register';

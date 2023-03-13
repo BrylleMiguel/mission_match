@@ -1,5 +1,5 @@
+import { Center, Title } from '@mantine/core';
 import React from 'react';
-import { Title, Center, Container } from '@mantine/core';
 import Logo from '../../components/logo/Logo';
 
 function LoginTitle() {

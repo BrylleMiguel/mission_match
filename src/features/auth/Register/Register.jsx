@@ -1,6 +1,5 @@
+import { Center, Divider, Text } from '@mantine/core';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Divider, Title, Container, Center, Text } from '@mantine/core';
 import RegisterForm from './RegisterForm';
 
 export default function Register({ accounts, setAccounts }) {

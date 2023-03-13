@@ -9,6 +9,7 @@ export default function LoginForm({
    setHasError,
    setErrorMessage,
    setUsername,
+   setHasLoggedIn,
 }) {
    const navigate = useNavigate();
 
@@ -60,9 +61,10 @@ export default function LoginForm({
 
          if (email === emailInput && password === passwordInput) {
             setHasError(false);
-            navigate('/home');
-
             setUsername(name);
+            setHasLoggedIn(true);
+
+            navigate('/home');
          } else {
             setHasError(true);
             setErrorMessage('credentials not found.');

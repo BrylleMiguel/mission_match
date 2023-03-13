@@ -1,4 +1,3 @@
-import React from 'react';
 import {
    Center,
    Container,
@@ -7,6 +6,7 @@ import {
    Text,
    Title,
 } from '@mantine/core';
+import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -62,7 +62,10 @@ export default function LandingPage({ setUsername, setHasLoggedIn }) {
                fullWidth: true,
                variant: 'outline',
                radius: 'sm',
-               fn: () => handleNavigation('home'),
+               fn: () => {
+                  setHasLoggedIn(false);
+                  navigate('/home');
+               },
             })}
          </Flex>
       </Container>

@@ -1,28 +1,40 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Link, Outlet, Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 import {
    Affix,
-   Center,
    ColorSchemeProvider,
-   Flex,
    MantineProvider,
    rem,
 } from '@mantine/core';
 
-import LandingPage from './pages/landing';
-import HomePage from './pages/home';
-import LoginPage from './pages/login';
-import RegisterPage from './pages/register';
-import LogoutPage from './pages/logout';
-import Navbar from './components/nav/NavBar';
 import DarkLightMode from './components/darkLightMode/darkLightMode';
+import DesktopNavBar from './components/nav/DesktopNavBar';
+import HomePage from './pages/home';
+import LandingPage from './pages/landing';
+import LoginPage from './pages/login';
+import LogoutPage from './pages/logout';
+import RegisterPage from './pages/register';
 
 function App() {
-   const [username, setUsername] = React.useState('');
-   const [hasLoggedIn, setHasLoggedIn] = React.useState(false);
+   const [username, setUsername] = React.useState(() => {
+      const savedUsername = localStorage.getItem('username');
+      return savedUsername !== null ? savedUsername : '';
+   });
+
+   const [hasLoggedIn, setHasLoggedIn] = React.useState(() => {
+      const savedLoggedIn = localStorage.getItem('hasLoggedIn');
+      return savedLoggedIn !== null ? JSON.parse(savedLoggedIn) : false;
+   });
+
+   // persists state
+
+   React.useEffect(() => {
+      localStorage.setItem('username', username);
+      localStorage.setItem('hasLoggedIn', JSON.stringify(hasLoggedIn));
+   }, [username, hasLoggedIn]);
 
    const [accounts, setAccounts] = React.useState([
       {
@@ -33,11 +45,10 @@ function App() {
       },
    ]);
 
-   console.log({ accounts });
-
    const [colorScheme, setColorScheme] = React.useState('light');
-   const toggleColorScheme = () =>
+   const toggleColorScheme = () => {
       setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
+   };
 
    return (
       <ColorSchemeProvider
@@ -83,17 +94,29 @@ function App() {
                      <RegisterPage
                         accounts={accounts}
                         setAccounts={setAccounts}
-                        setUsername={setUsername}
                      />
                   }
                />
 
-               <Route path='/logout' element={<LogoutPage />} />
+               <Route
+                  path='/logout'
+                  element={
+                     <LogoutPage
+                        setUsername={setUsername}
+                        setHasLoggedIn={setHasLoggedIn}
+                     />
+                  }
+               />
 
                <Route
                   element={
                      <>
-                        <Navbar />
+                        <DesktopNavBar
+                           username={username}
+                           setUsername={setUsername}
+                           hasLoggedIn={hasLoggedIn}
+                           setHasLoggedIn={setHasLoggedIn}
+                        />
                         <Outlet />
                      </>
                   }
