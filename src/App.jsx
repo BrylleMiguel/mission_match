@@ -19,23 +19,7 @@ import LogoutPage from './pages/logout';
 import RegisterPage from './pages/register';
 
 function App() {
-   const [username, setUsername] = React.useState(() => {
-      const savedUsername = localStorage.getItem('username');
-      return savedUsername !== null ? savedUsername : '';
-   });
-
-   const [hasLoggedIn, setHasLoggedIn] = React.useState(() => {
-      const savedLoggedIn = localStorage.getItem('hasLoggedIn');
-      return savedLoggedIn !== null ? JSON.parse(savedLoggedIn) : false;
-   });
-
-   // persists state
-
-   React.useEffect(() => {
-      localStorage.setItem('username', username);
-      localStorage.setItem('hasLoggedIn', JSON.stringify(hasLoggedIn));
-   }, [username, hasLoggedIn]);
-
+   // stored accounts
    const [accounts, setAccounts] = React.useState([
       {
          id: uuidv4(),
@@ -45,10 +29,34 @@ function App() {
       },
    ]);
 
-   const [colorScheme, setColorScheme] = React.useState('light');
+   // get user username when logged in if loggedIn
+   const [username, setUsername] = React.useState(() => {
+      const savedUsername = localStorage.getItem('username');
+      return savedUsername !== null ? savedUsername : '';
+   });
+
+   // check if user is logged in
+   const [hasLoggedIn, setHasLoggedIn] = React.useState(() => {
+      const savedLoggedIn = localStorage.getItem('hasLoggedIn');
+      return savedLoggedIn !== null ? JSON.parse(savedLoggedIn) : false;
+   });
+
+   // color scheme
+   const [colorScheme, setColorScheme] = React.useState(() => {
+      const savedMode = localStorage.getItem('colorScheme');
+      return savedMode !== null ? savedMode : 'dark';
+   });
+
    const toggleColorScheme = () => {
       setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
    };
+
+   // persists state
+   React.useEffect(() => {
+      localStorage.setItem('colorScheme', colorScheme);
+      localStorage.setItem('username', username);
+      localStorage.setItem('hasLoggedIn', JSON.stringify(hasLoggedIn));
+   }, [colorScheme, username, hasLoggedIn]);
 
    return (
       <ColorSchemeProvider

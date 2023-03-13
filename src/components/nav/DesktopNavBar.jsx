@@ -37,11 +37,21 @@ export default function DesktopNavBar({
                   </Text>
                )}
                {username === '' && hasLoggedIn === false ? (
-                  <Text pl={'lg'}>
-                     <Link style={{ textDecoration: 'none' }} to={'/login'}>
-                        login
-                     </Link>
-                  </Text>
+                  <>
+                     <Text pl={'lg'}>
+                        <Link style={{ textDecoration: 'none' }} to={'/login'}>
+                           login
+                        </Link>
+                     </Text>
+                     <Text pl={'lg'}>
+                        <Link
+                           style={{ textDecoration: 'none' }}
+                           to={'/register'}
+                        >
+                           register
+                        </Link>
+                     </Text>
+                  </>
                ) : (
                   <Text pl={'lg'}>
                      <Link
