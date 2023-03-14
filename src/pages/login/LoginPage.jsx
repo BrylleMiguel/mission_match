@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Login from '../../features/auth/Login';
 import LoginTitle from './LoginTitle';
 
-export default function LoginPage({ accounts, setUsername, setHasLoggedIn }) {
+export default function LoginPage({ accounts, setUsername, setIsLoggedIn }) {
    return (
       <Container size={300} mt={200}>
          <Flex direction={'column'}>
@@ -12,7 +12,7 @@ export default function LoginPage({ accounts, setUsername, setHasLoggedIn }) {
             <Login
                accounts={accounts}
                setUsername={setUsername}
-               setHasLoggedIn={setHasLoggedIn}
+               setIsLoggedIn={setIsLoggedIn}
             />
             <Center>
                <Text>

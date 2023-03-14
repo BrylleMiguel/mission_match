@@ -15,7 +15,7 @@ import { BsExclamationLg } from 'react-icons/bs';
 import { customButton } from '../../components/button/customButton';
 import Logo from '../../components/logo/Logo';
 
-export default function LandingPage({ setUsername, setHasLoggedIn }) {
+export default function LandingPage({ setUsername, setIsLoggedIn }) {
    const navigate = useNavigate();
 
    return (
@@ -63,7 +63,8 @@ export default function LandingPage({ setUsername, setHasLoggedIn }) {
                variant: 'outline',
                radius: 'sm',
                fn: () => {
-                  setHasLoggedIn(false);
+                  setUsername('');
+                  setIsLoggedIn(false);
                   navigate('/home');
                },
             })}
@@ -72,7 +73,7 @@ export default function LandingPage({ setUsername, setHasLoggedIn }) {
    );
 
    function handleNavigation(to) {
-      setHasLoggedIn(true);
+      setIsLoggedIn(true);
 
       navigate(`/${to}`);
    }

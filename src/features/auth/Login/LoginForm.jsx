@@ -9,7 +9,7 @@ export default function LoginForm({
    setHasError,
    setErrorMessage,
    setUsername,
-   setHasLoggedIn,
+   setIsLoggedIn,
 }) {
    const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ export default function LoginForm({
          if (email === emailInput && password === passwordInput) {
             setHasError(false);
             setUsername(name);
-            setHasLoggedIn(true);
+            setIsLoggedIn(true);
 
             navigate('/home');
          } else {
