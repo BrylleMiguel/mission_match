@@ -7,6 +7,7 @@ import {
    AppShell,
    ColorSchemeProvider,
    Flex,
+   Footer,
    Header,
    MantineProvider,
    Navbar,
@@ -21,6 +22,7 @@ import LandingPage from './pages/landing';
 import LoginPage from './pages/login';
 import LogoutPage from './pages/logout';
 import RegisterPage from './pages/register';
+import Volunteer from './pages/volunteer/Volunteer';
 
 function App() {
    const navigate = useNavigate();
@@ -90,11 +92,6 @@ function App() {
                   location.pathname === '/logout'
                }
                padding='md'
-               navbar={
-                  <Navbar width={{ base: 250 }} p='xs'>
-                     <CNavbar />
-                  </Navbar>
-               }
                header={
                   <Header height={60} p='xs'>
                      <Flex justify='space-between' align='center'>
@@ -102,6 +99,21 @@ function App() {
                         <DarkLightMode />
                      </Flex>
                   </Header>
+               }
+               navbar={
+                  <Navbar width={{ base: 265 }} p='xs'>
+                     <CNavbar
+                        username={username}
+                        isLoggedIn={isLoggedIn}
+                        setIsLoggedIn={setIsLoggedIn}
+                        setUsername={setUsername}
+                     />
+                  </Navbar>
+               }
+               footer={
+                  <Footer height={60}>
+                     <h1>footer</h1>
+                  </Footer>
                }
                styles={(theme) => ({
                   main: {
@@ -158,6 +170,15 @@ function App() {
                      path='/home'
                      element={
                         <HomePage username={username} isLoggedIn={isLoggedIn} />
+                     }
+                  />
+                  <Route
+                     path='/volunteer'
+                     element={
+                        <Volunteer
+                           username={username}
+                           isLoggedIn={isLoggedIn}
+                        />
                      }
                   />
                </Routes>

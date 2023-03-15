@@ -7,12 +7,11 @@ import {
    Title,
 } from '@mantine/core';
 import React from 'react';
+import { BsExclamationLg } from 'react-icons/bs';
 
 import { useNavigate } from 'react-router-dom';
 
-import { BsExclamationLg } from 'react-icons/bs';
-
-import { customButton } from '../../components/button/customButton';
+import CustomButton from '../../components/button';
 import Logo from '../../components/logo/Logo';
 
 export default function LandingPage({ setUsername, setIsLoggedIn }) {
@@ -32,20 +31,20 @@ export default function LandingPage({ setUsername, setIsLoggedIn }) {
             align='flex-start'
             direction='column'
          >
-            {customButton({
-               title: 'Login',
-               fullWidth: true,
-               variant: 'outline',
-               radius: 'sm',
-               fn: () => handleNavigation('login'),
-            })}
-            {customButton({
-               title: 'Register',
-               fullWidth: true,
-               variant: 'outline',
-               radius: 'sm',
-               fn: () => handleNavigation('register'),
-            })}
+            <CustomButton
+               title='Login'
+               fullWidth={true}
+               variant='outline'
+               radius='sm'
+               fn={() => handleNavigation('login')}
+            />
+            <CustomButton
+               title='Register'
+               fullWidth={true}
+               variant='outline'
+               radius='sm'
+               fn={() => handleNavigation('register')}
+            />
             <Notification
                mt='sm'
                color={'red'}
@@ -57,17 +56,17 @@ export default function LandingPage({ setUsername, setIsLoggedIn }) {
                   activities.
                </Text>
             </Notification>
-            {customButton({
-               title: 'Continue as Guest',
-               fullWidth: true,
-               variant: 'outline',
-               radius: 'sm',
-               fn: () => {
+            <CustomButton
+               title='Continue as Guest'
+               fullWidth={true}
+               variant='outline'
+               radius='sm'
+               fn={() => {
                   setUsername('');
                   setIsLoggedIn(false);
                   navigate('/home');
-               },
-            })}
+               }}
+            />
          </Flex>
       </Container>
    );

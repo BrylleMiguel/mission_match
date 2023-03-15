@@ -1,7 +1,8 @@
-import { Button } from '@mantine/core';
 import React from 'react';
 
-export function customButton({ ...args }) {
+import { Button } from '@mantine/core';
+
+export default function CustomButton({ ...args }) {
    const { title, variant, type, fullWidth = false, radius, fn } = args;
    return (
       <Button
