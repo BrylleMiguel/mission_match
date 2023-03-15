@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { Avatar, Flex, Title } from '@mantine/core';
+import { Avatar, Flex, Title } from '@mantine/core'
 
-import _ from 'lodash';
+import _ from 'lodash'
 
 export default function HomePage({ username, isLoggedIn }) {
    return (
@@ -19,5 +19,5 @@ export default function HomePage({ username, isLoggedIn }) {
             Hi {username && isLoggedIn ? _.capitalize(username) : 'User'}!
          </Title>
       </Flex>
-   );
+   )
 }

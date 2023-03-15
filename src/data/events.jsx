@@ -171,6 +171,16 @@ export const events = [
       organizer: 'Montreal Community Garden Society',
       image: 'https://source.unsplash.com/random/?garden',
    },
+   {
+      id: uuidv4(),
+      name: 'Habitat Restoration Day',
+      date: randomDateWithinMonth(),
+      location: 'Vancouver, Canada',
+      description:
+         'Join us in restoring a local habitat for native wildlife! We will be removing invasive species and planting native ones to improve the ecosystem. Volunteers will receive a free t-shirt, lunch, and a chance to learn about local conservation efforts.',
+      organizer: 'Vancouver Wildlife Conservation Society',
+      image: 'https://source.unsplash.com/random/?restore,habitat',
+   },
 ];
 
 function randomDateWithinMonth() {

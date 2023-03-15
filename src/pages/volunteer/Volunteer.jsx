@@ -1,23 +1,36 @@
-import { Button, Card, Grid, Image, Text, Title } from '@mantine/core';
+import { Button, Card, Flex, Grid, Image, Text, Title } from '@mantine/core';
+import React from 'react';
 import { BsBoxArrowInDownRight } from 'react-icons/bs';
 
 import { FaSeedling } from 'react-icons/fa';
 
-import { events } from '../../data/events';
+import VolunteerForm from './VolunteerForm';
 
 export default function Volunteer() {
+   const [searchInput, setSearchInput] = React.useState('');
+   const [filteredEvents, setFilteredEvents] = React.useState([]);
+
+   console.log(filteredEvents);
    return (
       <>
-         <Title>Volunteer</Title>
+         <Flex align='center' justify='space-between' my='md'>
+            <Title>Upcoming Activities</Title>
+            <VolunteerForm
+               searchInput={searchInput}
+               setSearchInput={setSearchInput}
+               filteredEvents={filteredEvents}
+               setFilteredEvents={setFilteredEvents}
+            />
+         </Flex>
          <Grid>
-            {events.map((event) => {
+            {filteredEvents.map((event) => {
                // prettier-ignore
                const { id, name, location, description, organizer, date, image, } = event;
                return (
                   <Grid.Col key={id} span={'auto'}>
-                     <Card shadow='sm' padding='lg' radius='md' withBorder>
+                     <Card shadow='sm' radius='md' withBorder>
                         <Card.Section>
-                           <Image src={image} height={160} alt='Norway' />
+                           <Image src={image} height={200} alt={name} />
                         </Card.Section>
 
                         <Title order={4} weight={500} mt='sm'>
@@ -38,7 +51,7 @@ export default function Volunteer() {
 
                         <Button.Group>
                            <Button
-                              leftIcon={<BsBoxArrowInDownRight size={17} />}
+                              leftIcon={<BsBoxArrowInDownRight />}
                               variant='light'
                               color='blue'
                               fullWidth
