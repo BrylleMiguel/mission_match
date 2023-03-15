@@ -29,14 +29,19 @@ function App() {
    const location = useLocation();
 
    // stored accounts
-   const [accounts, setAccounts] = React.useState([
-      {
-         id: uuidv4(),
-         name: 'David Johnson',
-         email: 'davidj@gmail.com',
-         password: 'david123',
-      },
-   ]);
+   const [accounts, setAccounts] = React.useState(() => {
+      const savedAccounts = localStorage.getItem('accounts');
+      return savedAccounts
+         ? JSON.parse(savedAccounts)
+         : [
+              {
+                 id: uuidv4(),
+                 name: 'David Johnson',
+                 email: 'davidj@gmail.com',
+                 password: 'david123',
+              },
+           ];
+   });
 
    // get user username when logged in if loggedIn
    const [username, setUsername] = React.useState(() => {
@@ -69,7 +74,8 @@ function App() {
       localStorage.setItem('colorScheme', colorScheme);
       localStorage.setItem('username', username);
       localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
-   }, [colorScheme, username, isLoggedIn]);
+      localStorage.setItem('accounts', JSON.stringify(accounts));
+   }, [colorScheme, username, isLoggedIn, accounts]);
 
    return (
       <ColorSchemeProvider
@@ -103,6 +109,8 @@ function App() {
                navbar={
                   <Navbar width={{ base: 265 }} p='xs'>
                      <CNavbar
+                        // passing down accounts to access email property
+                        accounts={accounts}
                         username={username}
                         isLoggedIn={isLoggedIn}
                         setIsLoggedIn={setIsLoggedIn}

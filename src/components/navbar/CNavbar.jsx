@@ -7,15 +7,30 @@ import { BiLogIn, BiLogOut, BiMessageDots } from 'react-icons/bi';
 import { IoIosLogIn } from 'react-icons/io';
 import { MdOutlineVolunteerActivism } from 'react-icons/md';
 
+import _ from 'lodash';
 import { CgProfile } from 'react-icons/cg';
 import NavItem from './NavItem';
 
 export default function Navbar({
+   accounts,
    username,
    isLoggedIn,
    setUsername,
    setIsLoggedIn,
 }) {
+   const [email, setEmail] = React.useState('');
+
+   React.useEffect(() => {
+      const getAccounts = async () => {
+         accounts.map((account) => {
+            console.log(account);
+            return username === account.name && setEmail(account.email);
+         });
+      };
+
+      getAccounts();
+   }, []);
+
    return (
       <Stack h={700} justify='space-between'>
          <Box>
@@ -78,8 +93,8 @@ export default function Navbar({
                   radius={50}
                />
                <Box pl='md'>
-                  <Title order={5}>David Johnson</Title>
-                  <Text>davidj@gmail.com</Text>
+                  <Title order={5}>{_.capitalize(username)}</Title>
+                  <Text>{email}</Text>
                </Box>
             </Flex>
          </Box>
